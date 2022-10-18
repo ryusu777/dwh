@@ -22,13 +22,13 @@ cur = conn.cursor()
 logging.debug('Start insert data postgre')
 
 # single insert in iteration
-sql = "INSERT INTO dim_drug_store(drug_store_id, name, location) VALUES (%s, %s, %s)"
+sql = "INSERT INTO dim_drug(drug_id, name, category, price_buy, price_sell, expired) VALUES (%s, %s, %s, %s, %s, %s)"
 
-with open('data_reconcile/drug_store.csv', mode='r') as csv_reader:
-    drug_stores = csv.reader(csv_reader, delimiter=',')
-    next(drug_stores)
-    for drug_store in tqdm(drug_stores):
-        cur.execute(sql, drug_store)
+with open('data_reconcile/drug.csv', mode='r') as csv_reader:
+    drugs = csv.reader(csv_reader, delimiter=',')
+    next(drugs)
+    for drug in tqdm(drugs):
+        cur.execute(sql, drug)
     conn.commit()
 
 logging.debug('Finish insert data postgre')
