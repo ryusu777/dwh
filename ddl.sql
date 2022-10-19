@@ -9,8 +9,8 @@ create table dim_customer (
 
 create table dim_drug (
     drug_id varchar(12),
-    name varchar(50),
-    category varchar(50),
+    name varchar(255),
+    category varchar(255),
     price_buy float,
     price_sell float,
     expired date,
